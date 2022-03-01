@@ -1,0 +1,44 @@
+@import "../../styles/styles";
+
+.Header {
+  height: 77px;
+  border-bottom: 2px solid $red;
+  background: $black;
+  width: 100%;
+  color: $white;
+  position: relative;
+
+  .container {
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    img {
+      width: 35px;
+      margin-right: 5px;
+    }
+
+    .title {
+      font-family: $Exo;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 34px;
+      line-height: 45px;
+      padding: 16px 0;
+      color: $white;
+
+      &:hover {
+        text-shadow: 4px 4px 4px rgba(255, 255, 255, 0.25);
+      }
+    }
+  }
+}

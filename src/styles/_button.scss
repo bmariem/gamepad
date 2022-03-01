@@ -1,0 +1,35 @@
+.select-btn {
+  height: 37px;
+  background: $grey;
+  border-radius: $radius;
+  font-family: $Exo;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 19px;
+  line-height: 25px;
+  color: $white;
+}
+
+.primary-btn {
+  height: 37px;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  background: $red;
+  display: flex;
+  align-items: center;
+  border-radius: $radius;
+  font-family: $Exo;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 27px;
+  text-align: center;
+  color: $white;
+  &:hover {
+    box-shadow: 0px 4px 4px rgba(255, 70, 85, 0.25);
+  }
+  &:focus-visible {
+    outline: none;
+  }
+}

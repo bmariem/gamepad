@@ -1,0 +1,229 @@
+@import "../../styles/styles";
+
+.Home {
+  background: $black;
+  width: 100%;
+  color: $white;
+
+  .container {
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .main-title {
+    margin: 50px 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    flex: 100%;
+
+    img {
+      width: 75px;
+      margin-right: 10px;
+    }
+
+    h1 {
+      font-family: $Exo;
+      font-style: normal;
+      font-weight: normal;
+      color: $white;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 100px;
+      line-height: 133px;
+
+      &:hover {
+        text-shadow: 4px 4px 4px rgba(255, 255, 255, 0.25);
+      }
+    }
+  }
+
+  .search-container {
+    position: relative;
+    margin: auto;
+    flex-grow: 1;
+    max-width: 50%;
+    border-radius: $radius;
+    box-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
+    background: $white;
+
+    .search-input {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-size: 22px;
+      width: 100%;
+      border-radius: $radius;
+      padding: 20px;
+
+      &::placeholder {
+        font-family: $Exo;
+        color: #6f6f6f;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 24px;
+      }
+    }
+
+    .search-input-icon {
+      position: absolute;
+      right: 25px;
+      top: 20px;
+      font-size: 26px;
+      color: #131c2e;
+    }
+  }
+
+  .nbre-of-game {
+    text-align: center;
+    font-family: $Exo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 19px;
+    line-height: 25px;
+    width: 100%;
+    color: $white;
+    margin: 10px auto 45px;
+  }
+
+  .search-result {
+    width: 100%;
+    text-align: center;
+    margin-top: 33px;
+    font-family: $Exo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 48px;
+    color: $white;
+
+    span {
+      font-style: italic;
+      font-family: $Exo;
+      color: $white;
+      position: relative;
+
+      &::after {
+        position: absolute;
+        content: "";
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: $red;
+        width: 119px;
+        height: $radius;
+      }
+    }
+  }
+
+  .all-filters {
+    margin: 64px auto 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+
+    .filters {
+      display: flex;
+      gap: 20px;
+    }
+  }
+
+  .sub-title {
+    flex: 100%;
+    font-family: $Exo;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 40px;
+    color: $white;
+    margin-bottom: 10px;
+  }
+
+  .cards {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+
+    .card {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      width: 200px;
+      height: 250px;
+      border-radius: $radius;
+      position: relative;
+
+      &:hover {
+        // hover card comes here
+      }
+
+      h3 {
+        position: absolute;
+        font-family: $Exo;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 23px;
+        color: $white;
+        left: 5%;
+        bottom: 9%;
+      }
+    }
+  }
+
+  .home-pagination {
+    max-width: 1280px;
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+
+    .pagination {
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-start;
+      margin: 2rem 0;
+      border-radius: 5px;
+
+      li {
+        min-width: 20px;
+        width: auto;
+        height: 30px;
+        border-radius: $radius;
+        margin: 0;
+        text-align: center;
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.active {
+          background-color: $red;
+
+          a {
+            outline: 0;
+          }
+        }
+
+        a {
+          font-family: $Exo;
+          color: $white;
+        }
+      }
+    }
+  }
+}

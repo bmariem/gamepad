@@ -1,0 +1,32 @@
+@import "../../styles/styles";
+
+.Footer {
+  background: $black;
+  width: 100%;
+  color: $white;
+  padding: 40px 0;
+
+  .container {
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  p {
+    font-family: $Exo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 21px;
+    line-height: 28px;
+    color: #c4c4c4;
+
+    a {
+      text-decoration: underline;
+      color: $white;
+      margin-left: 5px;
+    }
+  }
+}
