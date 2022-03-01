@@ -32,7 +32,7 @@ const Home = () => {
   const [platform, setPlatform] = useState("All");
   const [type, setType] = useState("All");
   const [ordering, setOrdering] = useState("Default");
-  const [filters, setFilters] = useState(false);
+  const [filterCounter, setFilterCounter] = useState(0);
 
   const initialFetch = useCallback(async () => {
     try {
@@ -62,7 +62,7 @@ const Home = () => {
     } catch (error) {
       console.log(error.response);
     }
-  }, [page, search, platform, type, ordering]);
+  }, [page, search, filterCounter]);
 
   useEffect(() => {
     initialFetch();
@@ -73,6 +73,7 @@ const Home = () => {
   };
 
   const handleFilters = () => {
+    setFilterCounter(filterCounter + 1);
     initialFetch();
   };
 
@@ -97,12 +98,11 @@ const Home = () => {
             onChange={(event) => {
               setSearch(event.target.value);
               setPage(1);
-              setFilters(true);
             }}
           />
           <FontAwesomeIcon icon="search" className="search-input-icon" />
         </div>
-        {filters && (
+        {search.length > 0 && (
           <>
             <p className="search-result">
               Search result for <span>" {search} "</span>
@@ -110,11 +110,11 @@ const Home = () => {
           </>
         )}
         <p className="nbre-of-game">
-          {!filters ? "Search" : ""} {games.count} games
+          {search.length === 0 ? "Search" : ""} {games.count} games
         </p>
 
         {/* Refine search results */}
-        {filters && (
+        {search.length > 0 && (
           <div className="all-filters">
             <div className="filters">
               <Platforms platform={platform} setPlatform={setPlatform} />
@@ -130,7 +130,9 @@ const Home = () => {
         )}
 
         {/* Games list */}
-        {!filters && <h2 className="sub-title">Most Revelance Games</h2>}
+        {search.length === 0 && (
+          <h2 className="sub-title">Most Revelance Games</h2>
+        )}
         <div className="cards">
           {games.results.map((game, index) => {
             return (
