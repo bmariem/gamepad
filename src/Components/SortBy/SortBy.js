@@ -40,7 +40,7 @@ const SortBy = ({ ordering, setOrdering }) => {
   console.log("Sort by => ", ordering);
   return (
     <Select
-      placeholder={<div>Sort by</div>}
+      placeholder={<div style={{ color: "#fff" }}>Sort by</div>}
       className="select-btn"
       styles={customStyles}
       isClearable={true}

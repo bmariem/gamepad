@@ -55,7 +55,7 @@ const Genres = ({ type, setType }) => {
     <Spinner />
   ) : (
     <Select
-      placeholder={<div>Type</div>}
+      placeholder={<div style={{ color: "#fff" }}>Type</div>}
       className="select-btn"
       styles={customStyles}
       isClearable={true}

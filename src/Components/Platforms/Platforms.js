@@ -34,7 +34,7 @@ const Platforms = ({ platform, setPlatform }) => {
   const customStyles = {
     option: (provided, state) => ({
       ...provided,
-      color: state.isSelected ? "#ff4655" : "#404040",
+      color: state.isSelected ? "#fff" : "#404040",
       padding: 10,
     }),
     control: () => ({
@@ -55,7 +55,7 @@ const Platforms = ({ platform, setPlatform }) => {
     <Spinner />
   ) : (
     <Select
-      placeholder={<div>Platform</div>}
+      placeholder={<div style={{ color: "#fff" }}>Platform</div>}
       styles={customStyles}
       className="select-btn"
       isClearable={true}

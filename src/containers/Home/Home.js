@@ -1,5 +1,5 @@
 // Lib
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "../../config/api";
 import ReactPaginate from "react-paginate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -34,7 +34,7 @@ const Home = () => {
   const [ordering, setOrdering] = useState("Default");
   const [filters, setFilters] = useState(false);
 
-  let fetchGames = async () => {
+  const initialFetch = useCallback(async () => {
     try {
       const page_size = 100;
       let url = `/games?page=${page}&page_size=${page_size}`;
@@ -62,18 +62,18 @@ const Home = () => {
     } catch (error) {
       console.log(error.response);
     }
-  };
+  }, [page, search, platform, type, ordering]);
 
   useEffect(() => {
-    fetchGames();
-  }, [page, search]);
+    initialFetch();
+  }, [initialFetch]);
 
   const handlePageClick = (event) => {
     setPage(event.selected + 1);
   };
 
   const handleFilters = () => {
-    fetchGames();
+    initialFetch();
   };
 
   return isLoading ? (
