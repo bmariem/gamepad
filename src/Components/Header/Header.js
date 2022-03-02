@@ -1,7 +1,7 @@
 // LIB
 import { Link } from "react-router-dom";
 
-// CSS
+// SCSS
 import "./Header.scss";
 
 // images

@@ -1,7 +1,7 @@
 // Lib
 import Select from "react-select";
 
-// CSS
+// SCSS
 import "./SortBy.scss";
 
 const SortBy = ({ ordering, setOrdering }) => {

@@ -1,4 +1,4 @@
-// CSS
+// SCSS
 import "./Footer.scss";
 
 const footer = () => {

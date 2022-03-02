@@ -6,7 +6,7 @@ import Select from "react-select";
 // Components
 import Spinner from "../Spinner/Spinner";
 
-// CSS
+// SCSS
 import "./Genres.scss";
 
 const Genres = ({ type, setType }) => {

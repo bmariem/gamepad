@@ -1,4 +1,4 @@
-// CSS
+// SCSS
 import "./Spinner.scss";
 
 const Spinner = () => {

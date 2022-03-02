@@ -6,7 +6,7 @@ import Select from "react-select";
 // Components
 import Spinner from "../../Components/Spinner/Spinner";
 
-// CSS
+// SCSS
 import "./Platforms.scss";
 
 const Platforms = ({ platform, setPlatform }) => {

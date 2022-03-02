@@ -33,3 +33,22 @@
     outline: none;
   }
 }
+
+.secondary-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 121px;
+  height: 62px;
+  border: 1px solid $white;
+  border-radius: $radius;
+  font-family: $Exo;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  color: $white;
+  padding: 8px;
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -1,5 +1,6 @@
 const routes = {
   HOME: "/",
+  GAME: "/game/:id",
   NOTFOUNDPAGE: "*",
 };
 

@@ -5,6 +5,7 @@ import routes from "./config/routes";
 
 // containers
 import Home from "./containers/Home/Home";
+import Game from "./containers/Game/Game";
 
 // Components
 import Header from "./Components/Header/Header";
@@ -19,6 +20,7 @@ function App() {
       <Header />
       <Routes>
         <Route path={routes.HOME} element={<Home />} />
+        <Route path={routes.GAME} element={<Game />} />
       </Routes>
       <Footer />
     </Router>
