@@ -32,7 +32,6 @@ const Home = () => {
   const [platform, setPlatform] = useState("All");
   const [type, setType] = useState("All");
   const [ordering, setOrdering] = useState("Default");
-  const [filterCounter, setFilterCounter] = useState(0);
 
   const initialFetch = useCallback(async () => {
     try {
@@ -43,15 +42,16 @@ const Home = () => {
         url = `${url}&search=${search}`; // search by name
       }
 
-      if (platform.id) {
+      if (platform != undefined && platform.id) {
         url = `${url}&platforms=${platform.id}`; // search by platform
+        console.log("i'm here");
       }
 
-      if (type.id) {
+      if (type != undefined && type.id) {
         url = `${url}&genres=${type.id}`; // search by type
       }
 
-      if (ordering.value) {
+      if (ordering != undefined && ordering.value) {
         url = `${url}&ordering=${ordering.value}`; // search by ordering
       }
 
@@ -60,9 +60,9 @@ const Home = () => {
       setPageCount(Math.ceil(Number(response.data.count) / page_size));
       setIsLoading(false); // set spinner on false
     } catch (error) {
-      console.log(error.response);
+      console.log(error);
     }
-  }, [page, search, filterCounter]);
+  }, [page, search, ordering, type, platform]);
 
   useEffect(() => {
     initialFetch();
@@ -71,12 +71,6 @@ const Home = () => {
   // Pagination
   const handlePageClick = (event) => {
     setPage(event.selected + 1);
-  };
-
-  // Handle clicks on CTA filters
-  const handleFilters = () => {
-    setFilterCounter(filterCounter + 1);
-    initialFetch();
   };
 
   return isLoading ? (
@@ -121,12 +115,7 @@ const Home = () => {
             <div className="filters">
               <Platforms platform={platform} setPlatform={setPlatform} />
               <Genres type={type} setType={setType} />
-            </div>
-            <div className="filters">
               <SortBy ordering={ordering} setOrdering={setOrdering} />
-              <button className="primary-btn" onClick={handleFilters}>
-                Go filters !
-              </button>
             </div>
           </section>
         )}

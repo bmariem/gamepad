@@ -31,13 +31,14 @@ const SortBy = ({ ordering, setOrdering }) => {
       color: "#fff",
     }),
     singleValue: (provided, state) => {
+      const color = "#fff";
       const opacity = state.isDisabled ? 0.5 : 1;
       const transition = "opacity 300ms";
 
-      return { ...provided, opacity, transition };
+      return { ...provided, opacity, transition, color };
     },
   };
-  console.log("Sort by => ", ordering);
+
   return (
     <Select
       placeholder={<div style={{ color: "#fff" }}>Sort by</div>}

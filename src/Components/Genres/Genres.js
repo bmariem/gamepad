@@ -27,7 +27,7 @@ const Genres = ({ type, setType }) => {
     fetchGenres();
   }, []);
 
-  const handleChangeDropdown = (type) => {
+  const handleChange = (type) => {
     setType(type);
   };
 
@@ -43,13 +43,13 @@ const Genres = ({ type, setType }) => {
       color: "#fff",
     }),
     singleValue: (provided, state) => {
+      const color = "#fff";
       const opacity = state.isDisabled ? 0.5 : 1;
       const transition = "opacity 300ms";
 
-      return { ...provided, opacity, transition };
+      return { ...provided, opacity, transition, color };
     },
   };
-  console.log("Type => ", type);
 
   return isLoading ? (
     <Spinner />
@@ -60,7 +60,7 @@ const Genres = ({ type, setType }) => {
       styles={customStyles}
       isClearable={true}
       options={types}
-      onChange={handleChangeDropdown}
+      onChange={handleChange}
       getOptionValue={(type) => type.id}
       getOptionLabel={(type) => type.name}
     />

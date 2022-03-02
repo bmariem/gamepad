@@ -11,10 +11,14 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
+    @include media-max("desktop-up") {
+      padding: 0 20px;
+    }
   }
 
   .container {
-    padding: 20px 0;
+    padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
@@ -34,6 +38,13 @@
     color: $white;
     border-bottom: $radius solid $red;
     display: flex;
+    padding: 30px 0 0;
+    margin-left: 20px;
+
+    @include media-max("desktop-up") {
+      font-size: 22px;
+      margin-left: 0;
+    }
   }
 
   &-visual {
@@ -47,6 +58,12 @@
     height: 400px;
     border-radius: $radius;
     position: relative;
+
+    @include media-max("desktop-up") {
+      background-color: red;
+      flex: inherit;
+      width: 100%;
+    }
   }
 
   &-details {
@@ -57,6 +74,12 @@
     > div {
       flex: 1 1;
       padding: 0 10px 0 0;
+
+      @include media-max("desktop-up") {
+        flex: 100%;
+        width: 100%;
+        padding: 0;
+      }
 
       h4 {
         font-family: $Exo;
@@ -111,6 +134,14 @@
     display: flex;
     flex-direction: column;
 
+    .react-multi-carousel-item {
+      @include media-max("desktop-up") {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
     .Game-title {
       align-self: center;
       font-size: 26px;
@@ -118,6 +149,10 @@
       padding: 40px 0 0;
       margin: 0 0 25px;
       border-bottom: $radius solid $red;
+
+      @include media-max("desktop-up") {
+        font-size: 22px;
+      }
     }
 
     .card {
