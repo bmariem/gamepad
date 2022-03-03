@@ -13,7 +13,7 @@
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
   }
 
@@ -43,6 +43,24 @@
       &:hover {
         text-shadow: 4px 4px 4px rgba(255, 255, 255, 0.25);
       }
+    }
+  }
+  .navigation {
+    display: flex;
+    align-items: center;
+    &-link {
+      text-decoration: none;
+      font-family: $Exo;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 27px;
+      color: $white;
+      margin-right: 30px;
+    }
+    .primary-btn {
+      width: 86px;
+      justify-content: center;
     }
   }
 }

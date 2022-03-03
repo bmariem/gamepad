@@ -10,7 +10,7 @@ import iconMessage from "../../assets/icons/icon-msg.png";
 import iconBookmark from "../../assets/icons/icon-bookmark.png";
 
 // Components
-import Spinner from "../../Components/Spinner/Spinner";
+import Spinner from "../../Components/UI/Spinner/Spinner";
 
 // SCSS
 import "./Game.scss";

@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../../assets/images/logo.png";
 
 // Components
-import Spinner from "../../Components/Spinner/Spinner";
+import Spinner from "../../Components/UI/Spinner/Spinner";
 import Platforms from "../../Components/Platforms/Platforms";
 import Genres from "../../Components/Genres/Genres";
 import SortBy from "../../Components/SortBy/SortBy";

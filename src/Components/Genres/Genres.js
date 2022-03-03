@@ -4,7 +4,7 @@ import axios from "../../config/api";
 import Select from "react-select";
 
 // Components
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../../Components/UI/SmallSpinner/SmallSpinner";
 
 // SCSS
 import "./Genres.scss";

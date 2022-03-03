@@ -15,6 +15,16 @@ const Header = () => {
           <img src={logo} alt="Gamepad" />
           <p className="title">Gamepad</p>
         </Link>
+
+        <div className="navigation">
+          {/* Show page collection for logged in User <=> else login */}
+          <Link to="/collection" className="navigation-link">
+            My Collection
+          </Link>
+
+          {/* handle signUp/login here */}
+          <button className="primary-btn">Login</button>
+        </div>
       </div>
     </header>
   );

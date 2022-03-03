@@ -4,67 +4,68 @@ import axios from "../../config/api";
 import Select from "react-select";
 
 // Components
-import Spinner from "../../Components/UI/SmallSpinner/SmallSpinner";
+import Spinner from "../UI/UI/Spinner/Spinner";
 
-// SCSS
-import "./Platforms.scss";
+// CSS
+import "./Genres.scss";
 
-const Platforms = ({ platform, setPlatform }) => {
+const Genres = () => {
   // STATES
-  const [platforms, setPlatforms] = useState({});
+  const [types, setTypes] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [type, setType] = useState("All");
 
   useEffect(() => {
-    const fetchPlatforms = async () => {
+    const fetchGenres = async () => {
       try {
-        const response = await axios.get(`/platforms`);
-        setPlatforms(response.data.results); // set platforms <=> 50
+        const response = await axios.get(`/genres`);
+        setTypes(response.data.results); // set Genres <=> 19
         setIsLoading(false); // set spinner on false
       } catch (error) {
         console.log(error.response);
       }
     };
-    fetchPlatforms();
+    fetchGenres();
   }, []);
 
-  const handleChangeDropdown = (platform) => {
-    setPlatform(platform);
+  const handleChangeDropdown = (type) => {
+    setType(type);
   };
 
   const customStyles = {
     option: (provided, state) => ({
       ...provided,
-      color: state.isSelected ? "#fff" : "#404040",
+      color: state.isSelected ? "#ff4655" : "#404040",
       padding: 10,
     }),
     control: () => ({
-      width: "auto",
+      width: 200,
       display: "flex",
       color: "#fff",
     }),
     singleValue: (provided, state) => {
-      const color = "#fff";
       const opacity = state.isDisabled ? 0.5 : 1;
       const transition = "opacity 300ms";
 
-      return { ...provided, opacity, transition, color };
+      return { ...provided, opacity, transition };
     },
   };
+  console.log(type);
 
   return isLoading ? (
     <Spinner />
   ) : (
     <Select
-      placeholder={<div style={{ color: "#fff" }}>Platform</div>}
+      placeholder={<div>Type</div>}
+      className="Genres"
       styles={customStyles}
-      className="select-btn"
       isClearable={true}
+      options={types}
       onChange={handleChangeDropdown}
-      options={platforms}
-      getOptionValue={(platform) => platform.id}
-      getOptionLabel={(platform) => platform.name}
+      getOptionValue={(type) => type.id}
+      getOptionLabel={(type) => type.name}
     />
   );
 };
 
-export default Platforms;
+export default Genres;
