@@ -9,6 +9,7 @@ import axios from "./config/api";
 import Home from "./containers/Home/Home";
 import Game from "./containers/Game/Game";
 import Collection from "./containers/Collection/Collection";
+import NotFoundPage from "./containers/NotFoundPage/NotFoundPage";
 
 // Components
 import Header from "./Components/Header/Header";
@@ -67,6 +68,7 @@ function App() {
         setSignupIsOpen={setSignupIsOpen}
         userData={userData}
       />
+
       <Routes>
         <Route path={routes.HOME} element={<Home />} />
         <Route path={routes.GAME} element={<Game token={token} />} />
@@ -74,7 +76,9 @@ function App() {
           path={routes.COLLECTION}
           element={<Collection token={token} />}
         />
+        <Route path={routes.NOTFOUNDPAGE} element={<NotFoundPage />} />
       </Routes>
+
       <Footer />
     </Router>
   );
