@@ -1,0 +1,67 @@
+@import "../../styles/variables";
+
+.howItWorks {
+  flex: 1;
+  background: linear-gradient(#000000, #242424);
+  display: flex;
+  padding: 25px;
+  max-width: 400px;
+  height: 531px;
+  margin: auto;
+  justify-content: center;
+  flex-direction: column;
+
+  @include media-max("desktop-up") {
+    padding: 15px;
+  }
+
+  @include media-max("phone-down") {
+    display: none;
+  }
+
+  &-title {
+    font-family: $Exo;
+    margin-bottom: 45px;
+    font-size: 32px;
+    line-height: 43px;
+    font-weight: 500;
+    color: $white;
+    text-align: left;
+    border-bottom: $radius solid $red;
+
+    @include media-max("desktop-up") {
+      font-size: 22px;
+      text-align: center;
+      line-height: 33px;
+      border-bottom: none;
+      margin-bottom: 15px;
+    }
+  }
+
+  &-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    span {
+      font-family: $Exo;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 17px;
+      line-height: 23px;
+      color: $white;
+      text-align: left;
+
+      @include media-max("desktop-up") {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  }
+  &-icon {
+    height: 20px;
+    width: auto;
+    object-fit: contain;
+    margin-right: 10px;
+  }
+}

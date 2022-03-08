@@ -1,0 +1,180 @@
+@import "../../styles/variables";
+
+.Signup {
+  .container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    @include media-max("desktop-up") {
+      flex-direction: column;
+    }
+  }
+
+  &-title {
+    font-family: $Exo;
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: 400;
+    color: $white;
+    text-align: left;
+
+    @include media-max("desktop-up") {
+      text-align: center;
+    }
+  }
+
+  &-form {
+    background: linear-gradient(#242424, #000000);
+    border-left: 2px solid $red;
+    display: flex;
+    padding: 25px;
+    max-width: 400px;
+    flex: 1;
+    height: 531px;
+    margin: auto;
+    justify-content: center;
+    flex-direction: column;
+
+    @include media-max("desktop-up") {
+      border-top: 2px solid $red;
+      border-left: none;
+      padding: 15px;
+    }
+
+    @include media-max("phone-down") {
+      border: none;
+    }
+
+    input {
+      &[type="text"],
+      &[type="email"],
+      &[type="password"] {
+        background-color: $white;
+        width: 100%;
+        border: none;
+        border-radius: $radius;
+        height: 45px;
+        margin-bottom: 20px;
+        padding: 20px;
+
+        &:focus-visible {
+          outline: none;
+        }
+
+        &::placeholder {
+          font-family: $Exo;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 17px;
+          line-height: 23px;
+          color: $darkGrey;
+        }
+      }
+
+      &[type="file"] {
+        display: none;
+      }
+    }
+  }
+
+  &-password {
+    display: flex;
+    gap: 5px;
+    input {
+      flex: 1;
+    }
+  }
+
+  &-avatar {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+
+    label {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      background-color: $white;
+      flex: 1;
+      border: none;
+      border-radius: $radius;
+      height: 45px;
+      margin-bottom: 20px;
+      padding: 20px;
+      font-family: $Exo;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 17px;
+      line-height: 23px;
+      color: $darkGrey;
+
+      span {
+        font-family: $Exo;
+      }
+      img {
+        transform: rotate(90deg);
+        width: 18px;
+        height: auto;
+        margin-left: 10px;
+      }
+    }
+
+    &--no-content {
+      flex: 1;
+      font-family: $Exo;
+      font-style: normal;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: left;
+      color: $white;
+      padding: 0px 20px;
+      margin-bottom: 20px;
+    }
+
+    &--content {
+      flex: 1;
+      position: relative;
+
+      &-img {
+        width: 75px;
+        height: 75px;
+        object-fit: cover;
+        border-radius: 100%;
+      }
+
+      &-removeImg {
+        position: absolute;
+        color: $white;
+        top: 5px;
+        right: 20%;
+        width: 25px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .primary-btn {
+    margin: 10px auto;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .error-message {
+    color: #e62429;
+    font-size: 15px;
+    padding: 1rem 0;
+    font-family: $Exo;
+    text-align: center;
+  }
+
+  &-link {
+    font-family: $Exo;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: $white;
+  }
+}

@@ -121,7 +121,9 @@
 
         &:first-of-type {
           strong {
-            color: green;
+            &.add-favorite {
+              color: green;
+            }
           }
         }
       }
