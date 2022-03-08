@@ -23,6 +23,12 @@ const Game = ({ token }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [favoriteGames, setFavoriteGames] = useState([]);
   const [added, isAdded] = useState(false);
+  const [isReadMore, setIsReadMore] = useState(true);
+
+  const toggleReadMore = () => {
+    // handle Read More on description
+    setIsReadMore(!isReadMore);
+  };
 
   // Retrieve the id of the game sent during navigation
   const { id } = useParams();
@@ -142,52 +148,62 @@ const Game = ({ token }) => {
 
           <div>
             {/* Platforms */}
-            <div>
-              <h4>Platforms</h4>
-              <p>
-                {game.game.platforms.map((platform, index) => {
-                  return <span key={index}>{platform.platform.name}, </span>;
-                })}
-              </p>
-            </div>
+            {game.game.platforms.length > 0 && (
+              <div>
+                <h4>Platforms</h4>
+                <p>
+                  {game.game.platforms.map((platform, index) => {
+                    return <span key={index}>{platform.platform.name}, </span>;
+                  })}
+                </p>
+              </div>
+            )}
 
             {/* Released date */}
-            <div>
-              <h4>Released date</h4>
-              <p>{game.game.released}</p>
-            </div>
+            {game.game.released && (
+              <div>
+                <h4>Released date</h4>
+                <p>{game.game.released}</p>
+              </div>
+            )}
 
             {/* Publisher */}
-            <div>
-              <h4>Publisher</h4>
-              <p>
-                {game.game.publishers.map((publisher, index) => {
-                  return <span key={index}>{publisher.name} </span>;
-                })}
-              </p>
-            </div>
+            {game.game.publishers.length > 0 && (
+              <div>
+                <h4>Publisher</h4>
+                <p>
+                  {game.game.publishers.map((publisher, index) => {
+                    return <span key={index}>{publisher.name} </span>;
+                  })}
+                </p>
+              </div>
+            )}
           </div>
 
           <div>
             {/* Genre */}
-            <div>
-              <h4>Genre</h4>
-              <p>
-                {game.game.genres.map((genre, index) => {
-                  return <span key={index}>{genre.name} </span>;
-                })}
-              </p>
-            </div>
+            {game.game.genres.length > 0 && (
+              <div>
+                <h4>Genre</h4>
+                <p>
+                  {game.game.genres.map((genre, index) => {
+                    return <span key={index}>{genre.name} </span>;
+                  })}
+                </p>
+              </div>
+            )}
 
             {/* Developer */}
-            <div>
-              <h4>Developers</h4>
-              <p>
-                {game.game.developers.map((developer, index) => {
-                  return <span key={index}>{developer.name} </span>;
-                })}
-              </p>
-            </div>
+            {game.game.developers.length > 0 && (
+              <div>
+                <h4>Developers</h4>
+                <p>
+                  {game.game.developers.map((developer, index) => {
+                    return <span key={index}>{developer.name} </span>;
+                  })}
+                </p>
+              </div>
+            )}
 
             {/* Rating */}
             <div>
@@ -195,11 +211,22 @@ const Game = ({ token }) => {
               <p>{game.game.rating}</p>
             </div>
           </div>
-          <div>
-            {/* Description */}
-            <h4>About</h4>
-            <p>{`${game.game.description_raw.substring(0, 200)}...`}</p>
-          </div>
+
+          {/* Description */}
+          {game.game.description_raw && (
+            <div>
+              <h4>About</h4>
+
+              <p>
+                {isReadMore
+                  ? game.game.description_raw.slice(0, 200)
+                  : game.game.description_raw}
+                <span onClick={toggleReadMore} className="read-or-hide">
+                  {isReadMore ? "... read more" : " show less"}
+                </span>
+              </p>
+            </div>
+          )}
         </section>
 
         {game.relatedGames.length > 0 && (

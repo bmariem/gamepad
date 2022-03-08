@@ -99,6 +99,11 @@
         line-height: 21px;
         color: $white;
         margin-bottom: 20px;
+
+        .read-or-hide {
+          cursor: pointer;
+          font-weight: bold;
+        }
       }
 
       &:first-of-type,
