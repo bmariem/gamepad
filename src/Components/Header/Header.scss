@@ -15,6 +15,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include media-max("tablet-up") {
+      padding: 0 10px;
+    }
   }
 
   .logo {
@@ -22,9 +26,13 @@
     align-items: center;
     text-decoration: none;
 
-    img {
+    > img {
       width: 35px;
       margin-right: 5px;
+
+      @include media-max("desktop-up") {
+        width: 25px;
+      }
     }
 
     .title {
@@ -37,7 +45,11 @@
       color: $white;
 
       @include media-max("desktop-up") {
-        font-size: 24px;
+        font-size: 20px;
+      }
+
+      @include media-max("phone-down") {
+        font-size: 16px;
       }
 
       &:hover {
@@ -48,7 +60,10 @@
   .navigation {
     display: flex;
     align-items: center;
+
     &-link {
+      border: none;
+      background-color: transparent;
       text-decoration: none;
       font-family: $Exo;
       font-style: normal;
@@ -56,11 +71,140 @@
       font-size: 20px;
       line-height: 27px;
       color: $white;
-      margin-right: 30px;
+      margin-right: 20px;
+
+      @include media-max("tablet-up") {
+        margin-right: 5px;
+        font-size: 16px;
+        line-height: 20px;
+        padding: 0 5px;
+        font-weight: 400;
+      }
     }
-    .primary-btn {
-      width: 86px;
-      justify-content: center;
+
+    &-login-signup {
+      display: flex;
+      gap: 5px;
+
+      @include media-max("tablet-up") {
+        .primary-btn:first-child {
+          display: none;
+        }
+      }
+
+      .primary-btn {
+        width: 86px;
+        justify-content: center;
+
+        @include media-max("tablet-up") {
+          width: auto;
+          padding: 0px 5px;
+          background: transparent;
+        }
+
+        span {
+          @include media-max("tablet-up") {
+            display: none;
+          }
+        }
+
+        .login-icon {
+          display: none;
+
+          @include media-max("tablet-up") {
+            display: block;
+            background: url("../../assets/icons/icon-login.png") no-repeat
+              center center;
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
     }
+
+    &-logout {
+      display: flex;
+      gap: 5px;
+
+      &--avatar {
+        display: flex;
+        align-items: center;
+
+        img {
+          width: 40px;
+          height: 40px;
+          object-fit: cover;
+          margin-left: 10px;
+          border-radius: 50%;
+          @include media-max("phone-down") {
+            margin-left: 0;
+          }
+        }
+
+        span {
+          font-family: $Exo;
+          font-style: normal;
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 27px;
+          color: $white;
+
+          @include media-max("phone-down") {
+            display: none;
+          }
+        }
+      }
+
+      .primary-btn {
+        min-width: 86px;
+        justify-content: center;
+
+        @include media-max("tablet-up") {
+          width: auto;
+          min-width: auto;
+          padding: 0px 5px;
+          background: transparent;
+        }
+
+        span {
+          @include media-max("tablet-up") {
+            display: none;
+          }
+        }
+
+        .login-icon {
+          display: none;
+
+          @include media-max("tablet-up") {
+            transform: rotate(180deg);
+            display: block;
+            background: url("../../assets/icons/icon-login.png") no-repeat
+              center center;
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.ReactModalPortal .close-modal {
+  cursor: pointer;
+  height: 20px;
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  text-decoration: none;
+  width: auto;
+
+  @include media-max("desktop-up") {
+    left: 20px;
+    top: 20px;
+  }
+
+  @include media-max("phone-down") {
+    left: 10px;
+    top: 10px;
   }
 }
