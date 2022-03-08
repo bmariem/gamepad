@@ -152,6 +152,7 @@ const Signup = ({ setUser, setSignupIsOpen, setLoginIsOpen }) => {
                   />
                   <img
                     src={cancel}
+                    alt="remove avatar"
                     className="Signup-avatar--content-removeImg"
                     onClick={() => {
                       setAvatarDisplayed("");

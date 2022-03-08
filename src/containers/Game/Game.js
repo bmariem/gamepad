@@ -66,7 +66,7 @@ const Game = ({ connectedUser }) => {
       }
     };
     fetchGame();
-  }, [id]);
+  }, [id, connectedUser]);
 
   const responsive = {
     superLargeDesktop: {
@@ -102,6 +102,7 @@ const Game = ({ connectedUser }) => {
           }
         );
         setFavoriteGames(response.data.favorites);
+        console.log(favoriteGames);
         isAdded(true); // set on true fav state
       } catch (error) {
         console.log(error);

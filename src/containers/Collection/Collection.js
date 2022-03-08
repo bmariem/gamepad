@@ -41,14 +41,11 @@ const Collection = ({ connectedUser }) => {
   const handleDeleteFavoriteGame = async (favGameId) => {
     if (connectedUser) {
       try {
-        const response = await axios.delete(
-          `/user/${connectedUser.id}/favorite/${favGameId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${connectedUser.token}`,
-            },
-          }
-        );
+        await axios.delete(`/user/${connectedUser.id}/favorite/${favGameId}`, {
+          headers: {
+            Authorization: `Bearer ${connectedUser.token}`,
+          },
+        });
         window.location.reload(false);
       } catch (error) {
         console.log(error);
