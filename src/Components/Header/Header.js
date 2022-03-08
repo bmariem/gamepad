@@ -15,13 +15,12 @@ import logo from "../../assets/images/logo.png";
 import userIcon from "../../assets/icons/icon-male-user.png";
 
 const Header = ({
-  token,
   setUser,
   setLoginIsOpen,
   setSignupIsOpen,
   modalLoginIsOpen,
   modalSignupIsOpen,
-  userData,
+  connectedUser,
 }) => {
   const navigate = useNavigate();
 
@@ -75,7 +74,7 @@ const Header = ({
   }, []);
 
   const handleCollectionPageClick = () => {
-    if (token) {
+    if (connectedUser) {
       // user authenticated => navigate to Collection page
       navigate("/collection");
     } else {
@@ -103,14 +102,17 @@ const Header = ({
           </button>
 
           {/* handle signUp/login here */}
-          {token ? (
+          {connectedUser ? (
             <div className="navigation-logout">
               <div className="navigation-logout--avatar">
                 {/* User Name */}
-                <span>{userData.username} </span>
+                <span>{connectedUser.username} </span>
                 {/* User avatar */}
-                {userData.avatar ? (
-                  <img src={userData.avatar} alt={userData.username} />
+                {connectedUser.avatar ? (
+                  <img
+                    src={connectedUser.avatar}
+                    alt={connectedUser.username}
+                  />
                 ) : (
                   <img src={userIcon} alt="no-avatar" />
                 )}

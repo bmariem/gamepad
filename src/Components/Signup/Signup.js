@@ -51,8 +51,8 @@ const Signup = ({ setUser, setSignupIsOpen, setLoginIsOpen }) => {
       );
 
       if (response.data.token) {
-        // save token in cookies
-        setUser(response.data.token);
+        // save user in cookies
+        setUser(response.data);
 
         // Redirect user to home page
         navigate("/");

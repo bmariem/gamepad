@@ -11,21 +11,24 @@ import Spinner from "../../Components/UI/Spinner/Spinner";
 //SCSS
 import "./Collection.scss";
 
-const Collection = ({ token }) => {
+const Collection = ({ connectedUser }) => {
   // STATES
   const [isLoading, setIsLoading] = useState(true);
   const [favoriteGames, setFavoriteGames] = useState([]);
 
   useEffect(() => {
     const fetchfavoriteGames = async () => {
-      if (token) {
+      if (connectedUser) {
         try {
-          const response = await axios.get(`/user/collections`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          setFavoriteGames(response.data.favorites.favoriteGames);
+          const response = await axios.get(
+            `/user/${connectedUser.id}/favorites`,
+            {
+              headers: {
+                Authorization: `Bearer ${connectedUser.token}`,
+              },
+            }
+          );
+          setFavoriteGames(response.data.favorites);
           setIsLoading(false);
         } catch (error) {
           console.log(error.message);
@@ -33,24 +36,20 @@ const Collection = ({ token }) => {
       }
     };
     fetchfavoriteGames();
-  }, [token]);
+  }, [connectedUser]);
 
   const handleDeleteFavoriteGame = async (favGameId) => {
-    if (token) {
+    if (connectedUser) {
       try {
-        const response = await axios.post(
-          `/user/deleteCollections`,
-          {
-            id: favGameId,
-          },
+        const response = await axios.delete(
+          `/user/${connectedUser.id}/favorite/${favGameId}`,
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${connectedUser.token}`,
             },
           }
         );
-
-        setFavoriteGames(response.data.favorites.favoriteGames);
+        window.location.reload(false);
       } catch (error) {
         console.log(error);
       }

@@ -17,7 +17,7 @@ import Spinner from "../../Components/UI/Spinner/Spinner";
 import "./Game.scss";
 import "react-multi-carousel/lib/styles.css";
 
-const Game = ({ token }) => {
+const Game = ({ connectedUser }) => {
   // STATES
   const [game, setGame] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -37,15 +37,19 @@ const Game = ({ token }) => {
       try {
         const response = await axios.get(`/game/${id}`);
 
-        if (token) {
-          const fetchCollection = await axios.get(`/user/collections`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
+        if (connectedUser) {
+          const fetchCollection = await axios.get(
+            `/user/${connectedUser.id}/favorites`,
+            {
+              headers: {
+                Authorization: `Bearer ${connectedUser.token}`,
+              },
+            }
+          );
+
           // game already exists in user's Fav
           if (
-            fetchCollection.data.favorites.favoriteGames.filter((element) => {
+            fetchCollection.data.favorites.filter((element) => {
               return element.id === Number(id);
             }).length > 0
           ) {
@@ -84,20 +88,20 @@ const Game = ({ token }) => {
   };
 
   const handleAddFavoriteGame = async () => {
-    if (token) {
+    if (connectedUser) {
       try {
         const response = await axios.post(
-          `/user/collections`,
+          `/user/${connectedUser.id}/favorites`,
           {
             id: game.game.id,
           },
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${connectedUser.token}`,
             },
           }
         );
-        setFavoriteGames(response.data.favorites.favoriteGames);
+        setFavoriteGames(response.data.favorites);
         isAdded(true); // set on true fav state
       } catch (error) {
         console.log(error);
@@ -121,7 +125,7 @@ const Game = ({ token }) => {
         ></section>
 
         <section className="Game-details">
-          {token && (
+          {connectedUser && (
             <div className="Game-details--cta">
               <button onClick={handleAddFavoriteGame} className="secondary-btn">
                 <span>

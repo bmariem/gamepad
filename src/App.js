@@ -1,9 +1,8 @@
 // LIB
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import routes from "./config/routes";
 import Cookies from "js-cookie";
-import axios from "./config/api";
 
 // containers
 import Home from "./containers/Home/Home";
@@ -20,61 +19,59 @@ import "./App.scss";
 
 function App() {
   // STATES
-  const [token, setToken] = useState(Cookies.get("token") || null); // stay connected if user refresh the page or leave it
+  const [connectedUser, setConnectedUser] = useState(
+    Cookies.get("gamepad_user_token")
+      ? {
+          token: Cookies.get("gamepad_user_token"),
+          id: Cookies.get("gamepad_user_id"),
+          username: Cookies.get("gamepad_user_name"),
+          avatar: Cookies.get("gamepad_user_avatar"),
+        }
+      : null
+  ); // stay connected if user refresh the page or leave it
   const [modalSignupIsOpen, setSignupIsOpen] = useState(false);
   const [modalLoginIsOpen, setLoginIsOpen] = useState(false);
-  const [userData, setUserData] = useState({}); // Return all user's infos from DB
 
-  const setUser = (token) => {
-    // if token exists
-    if (token) {
+  const setUser = (user) => {
+    // if user exists
+    if (user) {
       // => save it in the cookies for 10 days (in the browser session)
-      Cookies.set("token", token, { expires: 10 });
+      Cookies.set("gamepad_user_token", user.token, { expires: 10 }); // token
+      Cookies.set("gamepad_user_id", user.id, { expires: 10 }); // user id
+      Cookies.set("gamepad_user_name", user.username, { expires: 10 }); // user name
+      Cookies.set("gamepad_user_avatar", user.avatar, { expires: 10 }); // user avatar
     } else {
-      // delete token in cookies
-      Cookies.remove("token");
+      // delete user in cookies
+      Cookies.remove("gamepad_user_token");
+      Cookies.remove("gamepad_user_id");
+      Cookies.remove("gamepad_user_name");
+      Cookies.remove("gamepad_user_avatar");
     }
 
-    // update the state of token
-    setToken(token);
+    // update the state of user
+    setConnectedUser(user);
   };
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      if (token) {
-        try {
-          const response = await axios.get(`/user/collections`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          setUserData(response.data);
-        } catch (error) {
-          console.log(error.message);
-        }
-      }
-    };
-    fetchUser();
-  }, [token]);
 
   return (
     <Router>
       <Header
-        token={token}
+        connectedUser={connectedUser}
         setUser={setUser}
         setLoginIsOpen={setLoginIsOpen}
         modalLoginIsOpen={modalLoginIsOpen}
         modalSignupIsOpen={modalSignupIsOpen}
         setSignupIsOpen={setSignupIsOpen}
-        userData={userData}
       />
 
       <Routes>
         <Route path={routes.HOME} element={<Home />} />
-        <Route path={routes.GAME} element={<Game token={token} />} />
+        <Route
+          path={routes.GAME}
+          element={<Game connectedUser={connectedUser} />}
+        />
         <Route
           path={routes.COLLECTION}
-          element={<Collection token={token} />}
+          element={<Collection connectedUser={connectedUser} />}
         />
         <Route path={routes.NOTFOUNDPAGE} element={<NotFoundPage />} />
       </Routes>

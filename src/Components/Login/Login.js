@@ -33,8 +33,8 @@ const Login = ({ setUser, setSignupIsOpen, setLoginIsOpen }) => {
       });
 
       if (response.data.token) {
-        // save token in cookies
-        setUser(response.data.token);
+        // save User in cookies
+        setUser(response.data);
 
         // Redirect user to home page
         const target_url = query.get("target_url");
