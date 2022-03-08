@@ -44,6 +44,8 @@ const Game = ({ token }) => {
             }).length > 0
           ) {
             isAdded(true); // set on true fav state
+          } else {
+            isAdded(false);
           }
         }
 

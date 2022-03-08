@@ -13,6 +13,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
+    height: 100%;
   }
 
   h2 {
@@ -24,7 +25,6 @@
     font-size: 62px;
     line-height: 82px;
     color: $white;
-
     margin: 50px auto;
     border-bottom: 8px solid #ff4655;
 
@@ -35,6 +35,20 @@
 
     &:hover {
       text-shadow: 4px 4px 4px rgba(255, 255, 255, 0.25);
+    }
+  }
+
+  &-empty {
+    width: 100%;
+
+    p {
+      text-align: center;
+      font-family: $Exo;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 32px;
+      line-height: 42px;
+      color: $white;
     }
   }
 

@@ -15,7 +15,7 @@ const Collection = ({ token }) => {
   // STATES
   const [isLoading, setIsLoading] = useState(true);
   const [favoriteGames, setFavoriteGames] = useState([]);
-  const [collection, setcollection] = useState([]);
+
   useEffect(() => {
     const fetchfavoriteGames = async () => {
       if (token) {
@@ -39,7 +39,7 @@ const Collection = ({ token }) => {
     if (token) {
       try {
         const response = await axios.post(
-          `/user/collections`,
+          `/user/deleteCollections`,
           {
             id: favGameId,
           },
@@ -49,8 +49,8 @@ const Collection = ({ token }) => {
             },
           }
         );
-        console.log(response.data);
-        setcollection(response.data.favorites.favoriteGames);
+
+        setFavoriteGames(response.data.favorites.favoriteGames);
       } catch (error) {
         console.log(error);
       }
@@ -64,28 +64,34 @@ const Collection = ({ token }) => {
       <div className="container">
         <h2>My Collection</h2>
 
-        <div className="cards">
-          {favoriteGames.map((favoriteGame) => {
-            return (
-              <div
-                key={favoriteGame.id}
-                className="card"
-                style={{
-                  backgroundImage: `url(${favoriteGame.background_image})`,
-                }}
-              >
-                <h3>{favoriteGame.name}</h3>
-                <img
-                  src={iconFilledBookmark}
-                  alt="favorite game"
-                  className="tag"
-                  title={`Remove ${favoriteGame.name} from my collection`}
-                  onClick={() => handleDeleteFavoriteGame(favoriteGame.id)}
-                />
-              </div>
-            );
-          })}
-        </div>
+        {favoriteGames.length > 0 ? (
+          <div className="cards">
+            {favoriteGames.map((favoriteGame) => {
+              return (
+                <div
+                  key={favoriteGame.id}
+                  className="card"
+                  style={{
+                    backgroundImage: `url(${favoriteGame.background_image})`,
+                  }}
+                >
+                  <h3>{favoriteGame.name}</h3>
+                  <img
+                    src={iconFilledBookmark}
+                    alt="favorite game"
+                    className="tag"
+                    title={`Remove ${favoriteGame.name} from my collection`}
+                    onClick={() => handleDeleteFavoriteGame(favoriteGame.id)}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="Collection-empty">
+            <p>You don't have any favorites yet</p>
+          </div>
+        )}
       </div>
     </div>
   );
