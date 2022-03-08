@@ -8,6 +8,7 @@ import Carousel from "react-multi-carousel";
 // ICONS
 import iconMessage from "../../assets/icons/icon-msg.png";
 import iconBookmark from "../../assets/icons/icon-bookmark.png";
+import iconFilledBookmark from "../../assets/icons/icon-filled-bookmark.png";
 
 // Components
 import Spinner from "../../Components/UI/Spinner/Spinner";
@@ -16,10 +17,12 @@ import Spinner from "../../Components/UI/Spinner/Spinner";
 import "./Game.scss";
 import "react-multi-carousel/lib/styles.css";
 
-const Game = () => {
+const Game = ({ token }) => {
   // STATES
   const [game, setGame] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [favoriteGames, setFavoriteGames] = useState([]);
+  const [added, isAdded] = useState(false);
 
   // Retrieve the id of the game sent during navigation
   const { id } = useParams();
@@ -28,8 +31,23 @@ const Game = () => {
       try {
         const response = await axios.get(`/game/${id}`);
 
-        setGame(response.data);
+        if (token) {
+          const fetchCollection = await axios.get(`/user/collections`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          // game already exists in user's Fav
+          if (
+            fetchCollection.data.favorites.favoriteGames.filter((element) => {
+              return element.id === Number(id);
+            }).length > 0
+          ) {
+            isAdded(true); // set on true fav state
+          }
+        }
 
+        setGame(response.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error.response);
@@ -57,6 +75,28 @@ const Game = () => {
     },
   };
 
+  const handleAddFavoriteGame = async () => {
+    if (token) {
+      try {
+        const response = await axios.post(
+          `/user/collections`,
+          {
+            id: game.game.id,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setFavoriteGames(response.data.favorites.favoriteGames);
+        isAdded(true); // set on true fav state
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   return isLoading ? (
     <Spinner />
   ) : (
@@ -73,21 +113,30 @@ const Game = () => {
         ></section>
 
         <section className="Game-details">
-          <div className="Game-details--cta">
-            <Link to={"/collection"} className="secondary-btn">
-              <span>
-                Saved to <strong>Collection</strong>
-              </span>
-              <img src={iconBookmark} alt="icon bookmark" />
-            </Link>
-            <Link to={"/collection"} className="secondary-btn">
-              <span>
-                Add a <br />
-                Review
-              </span>
-              <img src={iconMessage} alt="icon message"></img>
-            </Link>
-          </div>
+          {token && (
+            <div className="Game-details--cta">
+              <button onClick={handleAddFavoriteGame} className="secondary-btn">
+                <span>
+                  Saved to <br />
+                  <strong className={added ? "add-favorite" : ""}>
+                    Collection
+                  </strong>
+                </span>
+                {added ? (
+                  <img src={iconFilledBookmark} alt="icon filled bookmark" />
+                ) : (
+                  <img src={iconBookmark} alt="icon bookmark" />
+                )}
+              </button>
+              <Link to={"/collection"} className="secondary-btn">
+                <span>
+                  Add a <br />
+                  Review
+                </span>
+                <img src={iconMessage} alt="icon message"></img>
+              </Link>
+            </div>
+          )}
 
           <div>
             {/* Platforms */}

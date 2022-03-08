@@ -1,0 +1,89 @@
+@import "../../styles/variables";
+
+.Collection {
+  background: $black;
+  width: 100%;
+  color: $white;
+
+  .container {
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  h2 {
+    display: flex;
+    justify-content: center;
+    font-family: $Exo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 62px;
+    line-height: 82px;
+    color: $white;
+
+    margin: 50px auto;
+    border-bottom: 8px solid #ff4655;
+
+    @include media-max("desktop-up") {
+      font-size: 22px;
+      line-height: 42px;
+    }
+
+    &:hover {
+      text-shadow: 4px 4px 4px rgba(255, 255, 255, 0.25);
+    }
+  }
+
+  .cards {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+
+    @include media-max("desktop-up") {
+      justify-content: center;
+    }
+
+    .card {
+      background-position: top center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: $grey;
+      position: relative;
+      width: 200px;
+      height: 250px;
+      border-radius: $radius;
+
+      &:hover {
+        // hover card comes here
+      }
+
+      h3 {
+        position: absolute;
+        font-family: $Exo;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 23px;
+        color: $white;
+        left: 5%;
+        bottom: 9%;
+      }
+
+      .tag {
+        cursor: pointer;
+        width: auto;
+        height: 30px;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+      }
+    }
+  }
+}
