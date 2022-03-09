@@ -142,7 +142,7 @@ const Signup = ({ setUser, setSignupIsOpen, setLoginIsOpen }) => {
                   );
                 }}
               />
-              {console.log(avatar)};
+
               {avatarDisplayed ? (
                 <div className="Signup-avatar--content">
                   <img

@@ -1,0 +1,81 @@
+@import "../../styles/variables";
+
+.Comment {
+  min-width: 400px;
+
+  @include media-max("phone-down") {
+    min-width: 300px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &-title {
+    font-family: $Exo;
+    margin: 25px auto;
+    font-size: 24px;
+    font-weight: 400;
+    color: $white;
+    text-align: center;
+
+    @include media-max("desktop-up") {
+      text-align: center;
+    }
+  }
+
+  &-form {
+    background: linear-gradient(#242424, #000000);
+    display: flex;
+    padding: 35px;
+    max-width: 400px;
+    flex: 1;
+    margin: auto;
+    justify-content: center;
+    flex-direction: column;
+
+    @include media-max("desktop-up") {
+      padding: 15px;
+    }
+
+    textarea,
+    input {
+      background-color: $white;
+      width: 100%;
+      border: none;
+      border-radius: $radius;
+      margin-bottom: 20px;
+      padding: 20px;
+
+      &:focus-visible {
+        outline: none;
+      }
+
+      &::placeholder {
+        font-family: $Exo;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 23px;
+        color: $darkGrey;
+      }
+    }
+  }
+
+  .primary-btn {
+    margin: 10px auto;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .error-message {
+    color: #e62429;
+    font-size: 15px;
+    padding: 1rem 0;
+    font-family: $Exo;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+}

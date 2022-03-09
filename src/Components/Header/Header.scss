@@ -194,15 +194,10 @@
   cursor: pointer;
   height: 20px;
   position: absolute;
-  left: 40px;
-  top: 40px;
+  left: 20px;
+  top: 20px;
   text-decoration: none;
   width: auto;
-
-  @include media-max("desktop-up") {
-    left: 20px;
-    top: 20px;
-  }
 
   @include media-max("phone-down") {
     left: 10px;

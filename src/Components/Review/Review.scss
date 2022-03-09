@@ -1,0 +1,80 @@
+@import "../../styles/variables";
+
+.Review {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 3px solid $red;
+  box-sizing: border-box;
+  border-radius: $radius;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 25px;
+  position: relative;
+
+  &-title {
+    font-family: $Exo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    text-decoration-line: underline;
+    color: $white;
+    margin-bottom: 10px;
+  }
+
+  &-text {
+    font-family: $Exo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  &-author {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    &--avatar {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    &--infos {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &--date {
+      font-family: $Exo;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 9px;
+      line-height: 12px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    &--username {
+      font-family: $Exo;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 21px;
+      color: $white;
+    }
+  }
+
+  &-vote {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    display: flex;
+  }
+}

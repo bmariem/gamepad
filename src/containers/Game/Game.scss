@@ -156,6 +156,7 @@
       padding: 40px 0 0;
       margin: 0 0 25px;
       border-bottom: $radius solid $red;
+      position: relative;
 
       @include media-max("desktop-up") {
         font-size: 22px;
@@ -184,6 +185,66 @@
         left: 5%;
         bottom: 9%;
       }
+    }
+  }
+
+  &-reviews {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &-noReview {
+      font-family: $Exo;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 40px;
+      text-align: center;
+      color: $white;
+      margin: 60px auto;
+    }
+
+    &-title {
+      font-family: $Exo;
+      align-self: center;
+      font-size: 26px;
+      line-height: 35px;
+      padding: 20px 0 0;
+      margin: 0 0 30px;
+      border-bottom: $radius solid $red;
+      position: relative;
+
+      @include media-max("desktop-up") {
+        font-size: 22px;
+      }
+    }
+
+    &-nbre {
+      font-family: $Exo;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 11px;
+      line-height: 15px;
+      color: $white;
+      position: absolute;
+      right: -10px;
+    }
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    &-subtitle {
+      font-family: $Exo;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 29px;
+      color: $white;
+      margin-bottom: 10px;
     }
   }
 }

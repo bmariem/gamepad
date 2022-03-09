@@ -4,14 +4,20 @@ import { Link } from "react-router-dom";
 import axios from "../../config/api";
 import { useParams } from "react-router-dom";
 import Carousel from "react-multi-carousel";
+import Modal from "react-modal";
 
 // ICONS
 import iconMessage from "../../assets/icons/icon-msg.png";
 import iconBookmark from "../../assets/icons/icon-bookmark.png";
 import iconFilledBookmark from "../../assets/icons/icon-filled-bookmark.png";
 
+// images
+import logo from "../../assets/images/logo.png";
+
 // Components
 import Spinner from "../../Components/UI/Spinner/Spinner";
+import AddComment from "../../Components/AddComment/AddComment";
+import Review from "../../Components/Review/Review";
 
 // SCSS
 import "./Game.scss";
@@ -24,6 +30,8 @@ const Game = ({ connectedUser }) => {
   const [favoriteGames, setFavoriteGames] = useState([]);
   const [added, isAdded] = useState(false);
   const [isReadMore, setIsReadMore] = useState(true);
+  const [modalCommentIsOpen, setCommentIsOpen] = useState(false);
+  const [reviews, setReviews] = useState([]);
 
   const toggleReadMore = () => {
     // handle Read More on description
@@ -79,13 +87,26 @@ const Game = ({ connectedUser }) => {
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 4,
+      items: 3,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 1,
     },
   };
+
+  // Comment Modal
+  const openCommentModal = () => {
+    setCommentIsOpen(true);
+  };
+
+  const closeCommentModal = () => {
+    setCommentIsOpen(false);
+  };
+
+  useEffect(() => {
+    Modal.setAppElement(document.getElementById("Game"));
+  }, []);
 
   const handleAddFavoriteGame = async () => {
     if (connectedUser) {
@@ -110,10 +131,49 @@ const Game = ({ connectedUser }) => {
     }
   };
 
+  const customStyles = {
+    overlay: {
+      position: "fixed",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: "rgb(23 23 25 / 82%)",
+    },
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      padding: 0,
+      border: "none",
+      background: "transparent",
+    },
+  };
+
+  useEffect(() => {
+    const fetchGameReviews = async () => {
+      try {
+        const response = await axios.get(`/game/${id}/reviews`, {
+          headers: {
+            Authorization: `Bearer ${connectedUser.token}`,
+          },
+        });
+
+        setReviews(response.data.reviews); // set reviews
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
+    fetchGameReviews();
+  }, [id, connectedUser.token]);
+
   return isLoading ? (
     <Spinner />
   ) : (
-    <main className="Game">
+    <main className="Game" id="Game">
       <div className="main-title">
         <h2 className="Game-title">{game.game.name}</h2>
       </div>
@@ -141,13 +201,34 @@ const Game = ({ connectedUser }) => {
                   <img src={iconBookmark} alt="icon bookmark" />
                 )}
               </button>
-              <Link to={"/collection"} className="secondary-btn">
+
+              <button onClick={openCommentModal} className="secondary-btn">
                 <span>
                   Add a <br />
                   Review
                 </span>
                 <img src={iconMessage} alt="icon message"></img>
-              </Link>
+              </button>
+
+              {/* open modal to add a comment */}
+              <Modal
+                isOpen={modalCommentIsOpen}
+                onRequestClose={closeCommentModal}
+                style={customStyles}
+                contentLabel="Comment Modal"
+              >
+                <img
+                  src={logo}
+                  alt="close modal"
+                  className="close-modal"
+                  onClick={closeCommentModal}
+                />
+                <AddComment
+                  gameid={game.game.id}
+                  connectedUser={connectedUser}
+                  setCommentIsOpen={setCommentIsOpen}
+                />
+              </Modal>
             </div>
           )}
 
@@ -235,10 +316,7 @@ const Game = ({ connectedUser }) => {
         </section>
 
         {game.relatedGames.length > 0 && (
-          <section
-            className="Game-related"
-            style={{ maxWidth: 1200, height: 360 }}
-          >
+          <section className="Game-related">
             <h2 className="Game-title">{game.game.name}</h2>
             <Carousel
               responsive={responsive}
@@ -264,6 +342,25 @@ const Game = ({ connectedUser }) => {
             </Carousel>
           </section>
         )}
+
+        <section className="Game-reviews">
+          <h2 className="Game-reviews-title">
+            Reviews
+            <span className="Game-reviews-nbre">
+              {reviews.length > 0 ? reviews.length : "0"}
+            </span>
+          </h2>
+          {reviews.length > 0 ? (
+            <div className="Game-reviews-wrapper">
+              <h3 className="Game-reviews-subtitle">Most relevant review</h3>
+              {reviews.map((review) => {
+                return <Review key={review._id} review={review} />;
+              })}
+            </div>
+          ) : (
+            <p className="Game-reviews-noReview">No rewiew for this game !</p>
+          )}
+        </section>
       </div>
     </main>
   );
