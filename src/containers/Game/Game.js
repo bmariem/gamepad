@@ -71,7 +71,7 @@ const Game = ({ connectedUser }) => {
         setGame(response.data);
         setIsLoading(false);
       } catch (error) {
-        console.log(error.response);
+        console.log("Error has been occured");
       }
     };
     fetchGame();
@@ -127,7 +127,7 @@ const Game = ({ connectedUser }) => {
         console.log(favoriteGames);
         isAdded(true); // set on true fav state
       } catch (error) {
-        console.log(error);
+        console.log("Error has been occured");
       }
     }
   };
@@ -166,11 +166,11 @@ const Game = ({ connectedUser }) => {
         });
         setReviews(response.data.reviews); // set reviews
       } catch (error) {
-        console.log(error.response);
+        console.log("Error has been occured");
       }
     };
     fetchGameReviews();
-  }, [id, reviews]);
+  }, [id, connectedUser, reviews]);
 
   return isLoading ? (
     <Spinner />
@@ -346,33 +346,34 @@ const Game = ({ connectedUser }) => {
             </Carousel>
           </section>
         )}
-
-        <section className="Game-reviews">
-          <h2 className="Game-reviews-title">
-            {t("game_reviews")}
-            <span className="Game-reviews-nbre">
-              {reviews.length > 0 ? reviews.length : "0"}
-            </span>
-          </h2>
-          {reviews.length > 0 ? (
-            <div className="Game-reviews-wrapper">
-              <h3 className="Game-reviews-subtitle">
-                {t("game_relevant_reviews")}
-              </h3>
-              {reviews.map((review) => {
-                return (
-                  <Review
-                    key={review._id}
-                    review={review}
-                    connectedUser={connectedUser}
-                  />
-                );
-              })}
-            </div>
-          ) : (
-            <p className="Game-reviews-noReview">{t("game_no_review_msg")}</p>
-          )}
-        </section>
+        {connectedUser && (
+          <section className="Game-reviews">
+            <h2 className="Game-reviews-title">
+              {t("game_reviews")}
+              <span className="Game-reviews-nbre">
+                {reviews.length > 0 ? reviews.length : "0"}
+              </span>
+            </h2>
+            {reviews.length > 0 ? (
+              <div className="Game-reviews-wrapper">
+                <h3 className="Game-reviews-subtitle">
+                  {t("game_relevant_reviews")}
+                </h3>
+                {reviews.map((review) => {
+                  return (
+                    <Review
+                      key={review._id}
+                      review={review}
+                      connectedUser={connectedUser}
+                    />
+                  );
+                })}
+              </div>
+            ) : (
+              <p className="Game-reviews-noReview">{t("game_no_review_msg")}</p>
+            )}
+          </section>
+        )}
       </div>
     </main>
   );

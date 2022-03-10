@@ -22,7 +22,7 @@ const Genres = ({ type, setType }) => {
         setTypes(response.data.results); // set Genres <=> 19
         setIsLoading(false); // set spinner on false
       } catch (error) {
-        console.log(error.response);
+        console.log("Error has been occured");
       }
     };
     fetchGenres();

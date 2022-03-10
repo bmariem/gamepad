@@ -48,7 +48,7 @@ const Collection = ({ connectedUser }) => {
           },
         });
       } catch (error) {
-        console.log(error);
+        console.log("Error has been occured");
       }
     }
   };

@@ -60,7 +60,7 @@ const Home = () => {
       setPageCount(Math.ceil(Number(response.data.count) / page_size));
       setIsLoading(false); // set spinner on false
     } catch (error) {
-      console.log(error);
+      console.log("Error has been occured");
     }
   }, [page, search, ordering, type, platform]);
 

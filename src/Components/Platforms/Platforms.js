@@ -22,7 +22,7 @@ const Platforms = ({ platform, setPlatform }) => {
         setPlatforms(response.data.results); // set platforms <=> 50
         setIsLoading(false); // set spinner on false
       } catch (error) {
-        console.log(error.response);
+        console.log("Error has been occured");
       }
     };
     fetchPlatforms();
