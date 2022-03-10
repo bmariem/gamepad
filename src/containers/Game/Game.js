@@ -139,6 +139,7 @@ const Game = ({ connectedUser }) => {
       right: 0,
       bottom: 0,
       backgroundColor: "rgb(23 23 25 / 82%)",
+      zIndex: 1001,
     },
     content: {
       top: "50%",
@@ -150,6 +151,7 @@ const Game = ({ connectedUser }) => {
       padding: 0,
       border: "none",
       background: "transparent",
+      zIndex: 1001,
     },
   };
 
@@ -161,14 +163,13 @@ const Game = ({ connectedUser }) => {
             Authorization: `Bearer ${connectedUser.token}`,
           },
         });
-
         setReviews(response.data.reviews); // set reviews
       } catch (error) {
         console.log(error.response);
       }
     };
     fetchGameReviews();
-  }, [id, connectedUser.token]);
+  }, [id, connectedUser.token, reviews]);
 
   return isLoading ? (
     <Spinner />
@@ -354,7 +355,13 @@ const Game = ({ connectedUser }) => {
             <div className="Game-reviews-wrapper">
               <h3 className="Game-reviews-subtitle">Most relevant review</h3>
               {reviews.map((review) => {
-                return <Review key={review._id} review={review} />;
+                return (
+                  <Review
+                    key={review._id}
+                    review={review}
+                    connectedUser={connectedUser}
+                  />
+                );
               })}
             </div>
           ) : (

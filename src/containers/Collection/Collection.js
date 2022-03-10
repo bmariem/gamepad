@@ -36,7 +36,7 @@ const Collection = ({ connectedUser }) => {
       }
     };
     fetchfavoriteGames();
-  }, [connectedUser]);
+  }, [connectedUser, favoriteGames]);
 
   const handleDeleteFavoriteGame = async (favGameId) => {
     if (connectedUser) {
@@ -46,7 +46,6 @@ const Collection = ({ connectedUser }) => {
             Authorization: `Bearer ${connectedUser.token}`,
           },
         });
-        window.location.reload(false);
       } catch (error) {
         console.log(error);
       }

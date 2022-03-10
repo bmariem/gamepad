@@ -55,6 +55,7 @@ const Header = ({
       right: 0,
       bottom: 0,
       backgroundColor: "rgb(23 23 25 / 82%)",
+      zIndex: 1001,
     },
     content: {
       top: "50%",
@@ -66,6 +67,7 @@ const Header = ({
       padding: 0,
       border: "none",
       background: "transparent",
+      zIndex: 1001,
     },
   };
 

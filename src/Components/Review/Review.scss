@@ -68,6 +68,7 @@
       font-size: 16px;
       line-height: 21px;
       color: $white;
+      text-transform: capitalize;
     }
   }
 
@@ -76,5 +77,31 @@
     right: 20px;
     bottom: 10px;
     display: flex;
+
+    &--nbre {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+
+      img {
+        cursor: pointer;
+      }
+
+      span {
+        font-family: $Exo;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 24px;
+
+        &.like {
+          color: #74d963;
+        }
+
+        &.dislike {
+          color: $red;
+        }
+      }
+    }
   }
 }
