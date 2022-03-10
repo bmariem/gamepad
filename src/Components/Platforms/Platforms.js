@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../config/api";
 import Select from "react-select";
+import { t } from "i18next";
 
 // Components
 import Spinner from "../../Components/UI/SmallSpinner/SmallSpinner";
@@ -55,7 +56,7 @@ const Platforms = ({ platform, setPlatform }) => {
     <Spinner />
   ) : (
     <Select
-      placeholder={<div style={{ color: "#fff" }}>Platform</div>}
+      placeholder={<div style={{ color: "#fff" }}>{t("game_platforms")}</div>}
       styles={customStyles}
       className="select-btn"
       isClearable={true}

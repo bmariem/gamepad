@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "../../config/api";
 import ReactPaginate from "react-paginate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { t } from "i18next";
 
 // images
 import logo from "../../assets/images/logo.png";
@@ -81,13 +82,13 @@ const Home = () => {
         {/* Title */}
         <div className="main-title">
           <img src={logo} alt="Gamepad" />
-          <h1>Gamepad</h1>
+          <h1>{t("title")}</h1>
         </div>
 
         {/* Search by name */}
         <div className="search-container">
           <input
-            placeholder="Search for a game..."
+            placeholder={t("home_search")}
             className="search-input"
             type="text"
             value={search}
@@ -101,12 +102,12 @@ const Home = () => {
         {search.length > 0 && (
           <>
             <p className="search-result">
-              Search result for <span>" {search} "</span>
+              {t("home_result_search")} <span>" {search} "</span>
             </p>
           </>
         )}
         <p className="nbre-of-game">
-          {search.length === 0 ? "Search" : ""} {games.count} games
+          {search.length === 0 ? "Search" : ""} {games.count} {t("home_games")}
         </p>
 
         {/* Refine search results */}
@@ -122,7 +123,7 @@ const Home = () => {
 
         {/* Display Games list */}
         {search.length === 0 && (
-          <h2 className="sub-title">Most Revelance Games</h2>
+          <h2 className="sub-title">{t("home_subtitle")}</h2>
         )}
         <section className="cards">
           {games.results.map((game) => {

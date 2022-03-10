@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "../../config/api";
+import { t } from "i18next";
 
 // COMPONENTS
 import HowItWorks from "../HowItWorks/HowItWorks";
@@ -65,11 +66,11 @@ const Login = ({ setUser, setSignupIsOpen, setLoginIsOpen }) => {
       <div className="container">
         <HowItWorks />
         <div className="Login-form">
-          <h2 className="Login-title">Login</h2>
+          <h2 className="Login-title">{t("login")}</h2>
           <form onSubmit={handleLoginSubmit}>
             <input
               type="email"
-              placeholder="Email..."
+              placeholder={t("email")}
               onChange={(event) => {
                 setEmail(event.target.value);
                 setErrorMessage("");
@@ -79,7 +80,7 @@ const Login = ({ setUser, setSignupIsOpen, setLoginIsOpen }) => {
 
             <input
               type="password"
-              placeholder="Password..."
+              placeholder={t("password")}
               onChange={(event) => {
                 setPassword(event.target.value);
                 setErrorMessage("");
@@ -92,7 +93,7 @@ const Login = ({ setUser, setSignupIsOpen, setLoginIsOpen }) => {
             )}
 
             <button className="primary-btn" type="submit">
-              Connexion
+              {t("connexion")}
             </button>
           </form>
 
@@ -104,7 +105,7 @@ const Login = ({ setUser, setSignupIsOpen, setLoginIsOpen }) => {
               setSignupIsOpen(true); // Open Signup Modal
             }}
           >
-            Don’t have an account yet ?
+            {t("login_link")}
           </p>
         </div>
       </div>

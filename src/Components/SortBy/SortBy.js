@@ -1,5 +1,6 @@
 // Lib
 import Select from "react-select";
+import { t } from "i18next";
 
 // SCSS
 import "./SortBy.scss";
@@ -41,7 +42,7 @@ const SortBy = ({ ordering, setOrdering }) => {
 
   return (
     <Select
-      placeholder={<div style={{ color: "#fff" }}>Sort by</div>}
+      placeholder={<div style={{ color: "#fff" }}>{t("sort_by")}</div>}
       className="select-btn"
       styles={customStyles}
       isClearable={true}

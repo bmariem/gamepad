@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Modal from "react-modal";
+import { t } from "i18next";
 
 // Components
 import Signup from "../Signup/Signup";
@@ -91,7 +92,7 @@ const Header = ({
       <div className="container">
         <Link to="/" className="logo" title="Gamepad">
           <img src={logo} alt="Gamepad" />
-          <p className="title">Gamepad</p>
+          <p className="title">{t("title")}</p>
         </Link>
 
         <div className="navigation">
@@ -100,7 +101,7 @@ const Header = ({
             onClick={handleCollectionPageClick}
             className="navigation-link"
           >
-            My Collection
+            {t("collection_title")}
           </button>
 
           {/* handle signUp/login here */}
@@ -125,7 +126,7 @@ const Header = ({
                 title="Sign out"
                 className="primary-btn"
               >
-                <span>Sign out</span>
+                <span>{t("sign_out")}</span>
                 <i className="login-icon"></i>
               </div>
             </div>
@@ -133,7 +134,7 @@ const Header = ({
             <div className="navigation-login-signup">
               {/* open modal to signup */}
               <button className="primary-btn" onClick={openSignupModal}>
-                Signup
+                {t("signup")}
               </button>
 
               <Modal
@@ -157,7 +158,7 @@ const Header = ({
 
               {/* open modal to signup */}
               <div className="primary-btn" onClick={openLoginModal}>
-                <span>Login</span>
+                <span>{t("login")}</span>
                 <i className="login-icon"></i>
               </div>
               <Modal

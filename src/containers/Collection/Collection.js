@@ -1,6 +1,7 @@
 // Lib
 import React, { useState, useEffect } from "react";
 import axios from "../../config/api";
+import { t } from "i18next";
 
 // ICONS
 import iconFilledBookmark from "../../assets/icons/icon-filled-red-bookmark.png";
@@ -57,7 +58,7 @@ const Collection = ({ connectedUser }) => {
   ) : (
     <div className="Collection">
       <div className="container">
-        <h2>My Collection</h2>
+        <h2>{t("collection_title")}</h2>
 
         {favoriteGames.length > 0 ? (
           <div className="cards">
@@ -84,7 +85,7 @@ const Collection = ({ connectedUser }) => {
           </div>
         ) : (
           <div className="Collection-empty">
-            <p>You don't have any favorites yet</p>
+            <p>{t("collection_no_fav")}</p>
           </div>
         )}
       </div>

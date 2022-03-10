@@ -1,6 +1,7 @@
 // Lib
 import React, { useState } from "react";
 import axios from "../../config/api";
+import { t } from "i18next";
 
 // SCSS
 import "./AddComment.scss";
@@ -44,11 +45,11 @@ const AddComment = ({ gameid, connectedUser, setCommentIsOpen }) => {
     <div className="Comment">
       <div className="container">
         <div className="Comment-form">
-          <h2 className="Comment-title">Write a Review</h2>
+          <h2 className="Comment-title">{t("addReview_main_title")}</h2>
           <form onSubmit={handleCommitSubmit}>
             <input
               required
-              placeholder="Review title..."
+              placeholder={t("addReview_title")}
               onChange={(event) => {
                 setReviewTitle(event.target.value);
                 setErrorMessage("");
@@ -58,7 +59,7 @@ const AddComment = ({ gameid, connectedUser, setCommentIsOpen }) => {
             <textarea
               required
               rows="5"
-              placeholder="Review text..."
+              placeholder={t("addReview_description")}
               onChange={(event) => {
                 setReviewText(event.target.value);
                 setErrorMessage("");
@@ -70,7 +71,7 @@ const AddComment = ({ gameid, connectedUser, setCommentIsOpen }) => {
             )}
 
             <button className="primary-btn" type="submit">
-              Publish
+              {t("addReview_CTA")}
             </button>
           </form>
         </div>

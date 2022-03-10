@@ -5,6 +5,7 @@ import axios from "../../config/api";
 import { useParams } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import Modal from "react-modal";
+import { t } from "i18next";
 
 // ICONS
 import iconMessage from "../../assets/icons/icon-msg.png";
@@ -191,9 +192,9 @@ const Game = ({ connectedUser }) => {
             <div className="Game-details--cta">
               <button onClick={handleAddFavoriteGame} className="secondary-btn">
                 <span>
-                  Saved to <br />
+                  {t("game_details_favorite_1")} <br />
                   <strong className={added ? "add-favorite" : ""}>
-                    Collection
+                    {t("game_details_favorite_2")}
                   </strong>
                 </span>
                 {added ? (
@@ -205,8 +206,8 @@ const Game = ({ connectedUser }) => {
 
               <button onClick={openCommentModal} className="secondary-btn">
                 <span>
-                  Add a <br />
-                  Review
+                  {t("game_details_review_1")} <br />
+                  {t("game_details_review_2")}
                 </span>
                 <img src={iconMessage} alt="icon message"></img>
               </button>
@@ -237,7 +238,7 @@ const Game = ({ connectedUser }) => {
             {/* Platforms */}
             {game.game.platforms.length > 0 && (
               <div>
-                <h4>Platforms</h4>
+                <h4>{t("game_platforms")}</h4>
                 <p>
                   {game.game.platforms.map((platform, index) => {
                     return <span key={index}>{platform.platform.name}, </span>;
@@ -249,7 +250,7 @@ const Game = ({ connectedUser }) => {
             {/* Released date */}
             {game.game.released && (
               <div>
-                <h4>Released date</h4>
+                <h4>{t("game_released")}</h4>
                 <p>{game.game.released}</p>
               </div>
             )}
@@ -257,7 +258,7 @@ const Game = ({ connectedUser }) => {
             {/* Publisher */}
             {game.game.publishers.length > 0 && (
               <div>
-                <h4>Publisher</h4>
+                <h4>{t("game_Publisher")}</h4>
                 <p>
                   {game.game.publishers.map((publisher, index) => {
                     return <span key={index}>{publisher.name} </span>;
@@ -271,7 +272,7 @@ const Game = ({ connectedUser }) => {
             {/* Genre */}
             {game.game.genres.length > 0 && (
               <div>
-                <h4>Genre</h4>
+                <h4>{t("game_Genre")}</h4>
                 <p>
                   {game.game.genres.map((genre, index) => {
                     return <span key={index}>{genre.name} </span>;
@@ -283,7 +284,7 @@ const Game = ({ connectedUser }) => {
             {/* Developer */}
             {game.game.developers.length > 0 && (
               <div>
-                <h4>Developers</h4>
+                <h4>{t("game_developers")}</h4>
                 <p>
                   {game.game.developers.map((developer, index) => {
                     return <span key={index}>{developer.name} </span>;
@@ -294,7 +295,7 @@ const Game = ({ connectedUser }) => {
 
             {/* Rating */}
             <div>
-              <h4>Rating</h4>
+              <h4>{t("game_Rating")}</h4>
               <p>{game.game.rating}</p>
             </div>
           </div>
@@ -302,14 +303,16 @@ const Game = ({ connectedUser }) => {
           {/* Description */}
           {game.game.description_raw && (
             <div>
-              <h4>About</h4>
+              <h4>{t("game_description")}</h4>
 
               <p>
                 {isReadMore
                   ? game.game.description_raw.slice(0, 200)
                   : game.game.description_raw}
                 <span onClick={toggleReadMore} className="read-or-hide">
-                  {isReadMore ? "... read more" : " show less"}
+                  {isReadMore
+                    ? `... ${t("game_desc_more")}`
+                    : ` ${t("game_desc_less")}`}
                 </span>
               </p>
             </div>
@@ -346,14 +349,16 @@ const Game = ({ connectedUser }) => {
 
         <section className="Game-reviews">
           <h2 className="Game-reviews-title">
-            Reviews
+            {t("game_reviews")}
             <span className="Game-reviews-nbre">
               {reviews.length > 0 ? reviews.length : "0"}
             </span>
           </h2>
           {reviews.length > 0 ? (
             <div className="Game-reviews-wrapper">
-              <h3 className="Game-reviews-subtitle">Most relevant review</h3>
+              <h3 className="Game-reviews-subtitle">
+                {t("game_relevant_reviews")}
+              </h3>
               {reviews.map((review) => {
                 return (
                   <Review
@@ -365,7 +370,7 @@ const Game = ({ connectedUser }) => {
               })}
             </div>
           ) : (
-            <p className="Game-reviews-noReview">No rewiew for this game !</p>
+            <p className="Game-reviews-noReview">{t("game_no_review_msg")}</p>
           )}
         </section>
       </div>

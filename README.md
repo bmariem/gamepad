@@ -19,6 +19,7 @@ You can also [click here](https://github.com/bmariem/gamepad) to go to the back-
 - Javascript ES6+
 - Yarn
 - Axios
+- i18n
 - SCSS
 - HTML
 

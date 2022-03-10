@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../config/api";
 import Select from "react-select";
+import { t } from "i18next";
 
 // Components
 import Spinner from "../../Components/UI/SmallSpinner/SmallSpinner";
@@ -55,7 +56,7 @@ const Genres = ({ type, setType }) => {
     <Spinner />
   ) : (
     <Select
-      placeholder={<div style={{ color: "#fff" }}>Type</div>}
+      placeholder={<div style={{ color: "#fff" }}>{t("genre_title")}</div>}
       className="select-btn"
       styles={customStyles}
       isClearable={true}

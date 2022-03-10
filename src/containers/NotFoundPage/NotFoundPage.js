@@ -1,5 +1,6 @@
 //LIB
 import { useNavigate } from "react-router-dom";
+import { t } from "i18next";
 
 // CSS
 import "./NotFoundPage.scss";
@@ -13,8 +14,8 @@ const NotFoundPage = () => {
         <div className="NotFoundPage-content">
           <h2>404</h2>
           <p>
-            Whoops! <br />
-            We couldn't find that page.
+            {t("NotFoundPage_msg")} <br />
+            {t("NotFoundPage_title")}
           </p>
           <button
             className="primary-btn"
@@ -22,7 +23,7 @@ const NotFoundPage = () => {
               navigate("/");
             }}
           >
-            Main page
+            {t("NotFoundPage_CTA")}
           </button>
         </div>
       </div>

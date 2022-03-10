@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../../config/api";
+import { t } from "i18next";
 
 // ICONS
 import upload from "../../assets/icons/icon-import.png";
@@ -80,13 +81,13 @@ const Signup = ({ setUser, setSignupIsOpen, setLoginIsOpen }) => {
       <div className="container">
         <HowItWorks />
         <div className="Signup-form">
-          <h2 className="Signup-title">Sign up</h2>
+          <h2 className="Signup-title">{t("signup")}</h2>
 
           <form onSubmit={handleSignupSubmit}>
             <input
               value={username}
               type="text"
-              placeholder="Username"
+              placeholder={t("username")}
               onChange={(event) => {
                 setUsername(event.target.value);
               }}
@@ -96,7 +97,7 @@ const Signup = ({ setUser, setSignupIsOpen, setLoginIsOpen }) => {
             <input
               value={email}
               type="email"
-              placeholder="Email"
+              placeholder={t("email")}
               onChange={(event) => {
                 setEmail(event.target.value);
                 setErrorMessage("");
@@ -108,7 +109,7 @@ const Signup = ({ setUser, setSignupIsOpen, setLoginIsOpen }) => {
               <input
                 value={password}
                 type="password"
-                placeholder="Password..."
+                placeholder={t("password")}
                 onChange={(event) => {
                   setPassword(event.target.value);
                   setErrorMessage("");
@@ -118,7 +119,7 @@ const Signup = ({ setUser, setSignupIsOpen, setLoginIsOpen }) => {
               <input
                 value={confirmPassword}
                 type="password"
-                placeholder="Confirm Password"
+                placeholder={t("confirm_password")}
                 onChange={(event) => {
                   setconfirmPassword(event.target.value);
                   setErrorMessage("");
@@ -129,7 +130,7 @@ const Signup = ({ setUser, setSignupIsOpen, setLoginIsOpen }) => {
 
             <div className="Signup-avatar">
               <label htmlFor="file">
-                <span>Add a photo</span>
+                <span>{t("avatar")}</span>
                 <img src={upload} alt="import icon" />
               </label>
               <input
@@ -160,7 +161,9 @@ const Signup = ({ setUser, setSignupIsOpen, setLoginIsOpen }) => {
                   />
                 </div>
               ) : (
-                <p className="Signup-avatar--no-content">No file selected</p>
+                <p className="Signup-avatar--no-content">
+                  {t("no_avatar_msg")}
+                </p>
               )}
             </div>
 
@@ -169,7 +172,7 @@ const Signup = ({ setUser, setSignupIsOpen, setLoginIsOpen }) => {
             )}
 
             <button className="primary-btn" type="submit">
-              Connexion
+              {t("connexion")}
             </button>
           </form>
 
@@ -181,7 +184,7 @@ const Signup = ({ setUser, setSignupIsOpen, setLoginIsOpen }) => {
               setLoginIsOpen(true); // Open Login Modal
             }}
           >
-            Don’t have an account yet ?
+            {t("login_link")}
           </p>
         </div>
       </div>
