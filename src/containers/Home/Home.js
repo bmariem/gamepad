@@ -43,16 +43,15 @@ const Home = () => {
         url = `${url}&search=${search}`; // search by name
       }
 
-      if (platform != undefined && platform.id) {
+      if (platform !== null && platform.id) {
         url = `${url}&platforms=${platform.id}`; // search by platform
-        console.log("i'm here");
       }
 
-      if (type != undefined && type.id) {
+      if (type !== null && type.id) {
         url = `${url}&genres=${type.id}`; // search by type
       }
 
-      if (ordering != undefined && ordering.value) {
+      if (ordering !== null && ordering.value) {
         url = `${url}&ordering=${ordering.value}`; // search by ordering
       }
 
