@@ -10,14 +10,17 @@ You can also [click here](https://github.com/bmariem/gamepad) to go to the back-
 ✔️ A route of **game**, taking the game id as a parameter;<br>
 ✔️ **Authentication system** by using react modal;<br>
 ✔️ A route of **favorites** displaying the list of favorite games : it is possible to add or remove them from this list;<br>
+✔️ A route of **reviews** to manage user reviews;<br>
+✔️ A route of **votes** to manage user votes : you can like or dislike the reviews;<br>
 
 ## 👩‍💻 Technologies and tools used:
 
+- ReactJs
 - Javascript ES6+
 - Yarn
 - Axios
+- SCSS
 - HTML
-- CSS
 
 ## ▶️ How to run the project?
 
