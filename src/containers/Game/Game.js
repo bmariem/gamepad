@@ -170,7 +170,7 @@ const Game = ({ connectedUser }) => {
       }
     };
     fetchGameReviews();
-  }, [id, connectedUser.token, reviews]);
+  }, [id, reviews]);
 
   return isLoading ? (
     <Spinner />
