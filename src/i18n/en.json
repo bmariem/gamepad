@@ -2,7 +2,8 @@
   "translation": {
     "title": "Gamepad",
     "home_search": "Search for a game...",
-    "home_result_search": "Search result for ",
+    "home_result_search": "Search from ",
+    "home_result_search_for": "Search for ",
     "home_games": "games",
     "home_subtitle": "Most Revelance Games",
     "NotFoundPage_msg": "Whoops!",

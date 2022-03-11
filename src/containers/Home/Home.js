@@ -101,12 +101,13 @@ const Home = () => {
         {search.length > 0 && (
           <>
             <p className="search-result">
-              {t("home_result_search")} <span>" {search} "</span>
+              {t("home_result_search_for")} <span>" {search} "</span>
             </p>
           </>
         )}
         <p className="nbre-of-game">
-          {search.length === 0 ? "Search" : ""} {games.count} {t("home_games")}
+          {search.length === 0 ? t("home_result_search") : ""} {games.count}{" "}
+          {t("home_games")}
         </p>
 
         {/* Refine search results */}
