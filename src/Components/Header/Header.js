@@ -7,6 +7,7 @@ import { t } from "i18next";
 // Components
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
+import Lang from "../Lang/Lang";
 
 // SCSS
 import "./Header.scss";
@@ -22,6 +23,8 @@ const Header = ({
   modalLoginIsOpen,
   modalSignupIsOpen,
   connectedUser,
+  language,
+  setLanguage,
 }) => {
   const navigate = useNavigate();
 
@@ -103,7 +106,6 @@ const Header = ({
           >
             {t("collection_title")}
           </button>
-
           {/* handle signUp/login here */}
           {connectedUser ? (
             <div className="navigation-logout">
@@ -181,6 +183,7 @@ const Header = ({
               </Modal>
             </div>
           )}
+          <Lang language={language} setLanguage={setLanguage} />
         </div>
       </div>
     </header>

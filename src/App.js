@@ -29,8 +29,10 @@ function App() {
         }
       : null
   ); // stay connected if user refresh the page or leave it
+
   const [modalSignupIsOpen, setSignupIsOpen] = useState(false);
   const [modalLoginIsOpen, setLoginIsOpen] = useState(false);
+  const [language, setLanguage] = useState("en");
 
   const setUser = (user) => {
     // if user exists
@@ -61,6 +63,8 @@ function App() {
         modalLoginIsOpen={modalLoginIsOpen}
         modalSignupIsOpen={modalSignupIsOpen}
         setSignupIsOpen={setSignupIsOpen}
+        language={language}
+        setLanguage={setLanguage}
       />
 
       <Routes>

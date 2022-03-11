@@ -56,7 +56,7 @@
         border-radius: $radius;
         height: 45px;
         margin-bottom: 20px;
-        padding: 20px;
+        padding: 20px 10px;
 
         &:focus-visible {
           outline: none;
@@ -66,7 +66,7 @@
           font-family: $Exo;
           font-style: normal;
           font-weight: 500;
-          font-size: 17px;
+          font-size: 15px;
           line-height: 23px;
           color: $darkGrey;
         }
@@ -102,13 +102,14 @@
       border-radius: $radius;
       height: 45px;
       margin-bottom: 20px;
-      padding: 20px;
+      padding: 20px 10px;
       font-family: $Exo;
       font-style: normal;
       font-weight: 500;
-      font-size: 17px;
+      font-size: 13px;
       line-height: 23px;
       color: $darkGrey;
+      text-align: left;
 
       span {
         font-family: $Exo;

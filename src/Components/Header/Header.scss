@@ -8,6 +8,10 @@
   color: $white;
   position: relative;
 
+  @include media-max("phone-down") {
+    height: 60px;
+  }
+
   .container {
     padding: 0 20px;
     max-width: 1200px;
@@ -18,6 +22,10 @@
 
     @include media-max("tablet-up") {
       padding: 0 10px;
+    }
+
+    @include media-max("phone-down") {
+      padding-top: 10px;
     }
   }
 
@@ -49,7 +57,7 @@
       }
 
       @include media-max("phone-down") {
-        font-size: 16px;
+        display: none;
       }
 
       &:hover {
@@ -60,6 +68,7 @@
   .navigation {
     display: flex;
     align-items: center;
+    position: relative;
 
     &-link {
       cursor: pointer;
@@ -86,6 +95,7 @@
     &-login-signup {
       display: flex;
       gap: 5px;
+      margin-right: 5px;
 
       @include media-max("tablet-up") {
         .primary-btn:first-child {
@@ -94,7 +104,7 @@
       }
 
       .primary-btn {
-        width: 86px;
+        width: 75px;
         justify-content: center;
 
         @include media-max("tablet-up") {
