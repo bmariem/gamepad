@@ -76,7 +76,6 @@ const Collection = ({ connectedUser }) => {
                     src={iconFilledBookmark}
                     alt="favorite game"
                     className="tag"
-                    title={`Remove ${favoriteGame.name} from my collection`}
                     onClick={() => handleDeleteFavoriteGame(favoriteGame.id)}
                   />
                 </div>
