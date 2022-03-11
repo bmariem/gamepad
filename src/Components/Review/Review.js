@@ -69,19 +69,13 @@ const Review = ({ review, connectedUser }) => {
 
       <div className="Review-vote">
         <div className="Review-vote--nbre">
-          <img
-            src={like}
-            alt="like icon"
-            title="Like this vote"
-            onClick={() => handleVoteClick(1)}
-          />
+          <img src={like} alt="like icon" onClick={() => handleVoteClick(1)} />
           <span className="like">{likesVotes ? "+" + likesVotes : "0"}</span>
         </div>
         <div className="Review-vote--nbre">
           <img
             src={dislike}
             alt="dislike icon"
-            title="Dislike this vote"
             onClick={() => handleVoteClick(-1)}
           />
           <span className="dislike">

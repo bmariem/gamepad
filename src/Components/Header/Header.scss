@@ -104,7 +104,7 @@
       }
 
       .primary-btn {
-        width: 75px;
+        width: auto;
         justify-content: center;
 
         @include media-max("tablet-up") {
@@ -136,6 +136,7 @@
     &-logout {
       display: flex;
       gap: 5px;
+      margin-right: 5px;
 
       &--avatar {
         display: flex;
